@@ -10,10 +10,13 @@ export JAVA_HOME=/usr
 export TOMCAT_USER=tom
 export CATALINA_HOME=/usr/local/tomcat6_of_tom
 export CATALINA_PID=$CATALINA_HOME/bin/tomcat6_of_tom.pid
+
+# Set the JMX enabler in $CATALINA_HOME to avoid shutdown problems
 export CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote
 -Dcom.sun.management.jmxremote.port=12503
 -Dcom.sun.management.jmxremote.ssl=false
 -Dcom.sun.management.jmxremote.authenticate=false"
+
 export JAVA_OPTS=" -server -Xms256m -Xmx512m -XX:MaxPermSize=256m"
 
 [ -d "$CATALINA_HOME" ] || { echo "Tomcat requires $CATALINA_HOME."; exit 1; }
