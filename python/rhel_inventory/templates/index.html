@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}RHEL servers list{% endblock %}
+{% block body %}
+  <br /><a>VM count : {{nb_vm}}</a>
+  <a id="refresh" href="#">Refresh data</a>
+  <table id="list">
+  <thead>
+  <tr><th width="200">Name</th>
+      <th width="100">IP</th>
+      <th width="100">OS</th>
+      <th width="100">Release</th>
+      <th width="100">Powered</th></tr>
+  </thead>
+  <tbody>
+  {% for srv in data %}
+   <tr>
+   <td>{{srv["name"]}}</td><td>{{srv["ip"]}}</td><td>{{srv["os"]}}</td><td>{{srv["release"]}}</td><td>{{srv["powered"]}}</td>
+   </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<script type="text/javascript">
+  
+$('#list').flexigrid({height:'auto',striped:false, width:'750'});
+
+$(document).ready(function(){ 
+  $("#refresh").click(function() {
+    $("#refresh").html("Refreshing ...");
+    $.ajax({
+      url: "/refresh",
+      success: function(data) {
+        alert(data);
+        $("#refresh").html('<a id="refresh" href="#">Refresh data</a>');
+      }
+    });
+  });
+});
+
+
+</script>
+{% endblock %}

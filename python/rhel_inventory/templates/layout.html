@@ -1,0 +1,14 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} | shortly</title>
+<link rel=stylesheet href="/static/css/style.css" type="text/css">
+<script language=javascript src="/static/js/jquery-1.8.2.min.js"></script>
+<!--start flexigrid dependencies -->
+<link rel=stylesheet href="/static/css/flexigrid.pack.css" type=text/css>
+<script language=javascript src="/static/js/flexigrid.pack.js"></script>
+<!--end flexigrid dependencies -->
+{% block javascript %}{% endblock %}
+<div class=box>
+  <h1><a href=/>Camaieu - RHEL servers list</a></h1>
+  <p class=tagline>List of all RHEL servers from Camaieu infrastructure. For the moment only VMware virtual machines.
+  {% block body %}{% endblock %}
+</div>
